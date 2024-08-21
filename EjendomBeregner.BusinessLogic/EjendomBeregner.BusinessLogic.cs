@@ -32,6 +32,31 @@
 
     #region after
 
+
+    /* 
+    Her er en after version af ovenstående kode som overholder alle SOLID-Principper.
+    
+    SRP - 
+    FileLejemaalReader klassen har kun ansvar for at læse filer
+    FileLejemaalDataParser klassen har kun ansvar for at parse filer
+
+    OCP - 
+    Hvis man ønsker at ændre måden som data bliver læst kan man oprette en ny klasse som implementerer ILejemaalReader uden det ændre på noget andet.
+    Hvis man gerne vil parse en anden filformat end CSV kan man oprette en klasse som implemeterer ILejemaalDataParser.
+
+    LSP -
+    FileLejemaalReader kan erstattes af enhver anden implementering af ILejemaalReader uden at påvirke andet
+    Samme med FileLejemaalDataParser
+
+    ISP -
+    Jeg bruger 2 specifikke interfaces ILejemaalReader og ILejemaalDataParser. Hver klasse implementerer kun det interface der er nødvendigt
+
+    DIP -
+    Kvadratmeterberegner afhænger af abstraktionerne ILejemaalReader og IlejemaalDataParser og ikke af konkrete implementeringer som FileLejemaalReader
+    Eller CsvLejemaalReader
+
+    */
+
     // Interface for at læse lejemål data
     public interface ILejemaalReader
     {
@@ -44,7 +69,7 @@
         double ParseKvadratmeter(string lejemaal);
     }
 
-    // Implementering af lejemål reader, der læser data fra en fil
+    // Implementering af lejemål reader, der læser data fra en fil 
     public class FileLejemaalReader : ILejemaalReader
     {
         public IEnumerable<string> ReadLejemaalData(string filename)
@@ -53,7 +78,7 @@
         }
     }
 
-    //Implementering af håndtering af CSV data
+    //Implementering af håndtering af CSV data 
     public class CsvLejemaalDataParser : ILejemaalDataParser
     {
         public double ParseKvadratmeter(string lejemaal)
