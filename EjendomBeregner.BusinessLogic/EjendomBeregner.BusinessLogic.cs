@@ -1,32 +1,32 @@
-﻿namespace EjendomBeregner.BusinessLogic
+﻿namespace EjendomBeregner
 {
     #region before
-    public class EjendomBeregnerService1
-    {
-        public double BeregnKvadratmeter1(string lejemaalDataFilename) //SRP - Beregner og henter fil, skal deles op i to metoder
-        {
-            var lejemaalene = File.ReadAllLines(lejemaalDataFilename);
-            var kvadratmeter = 0.0;
+    //public class EjendomBeregnerService1
+    //{
+    //    public double BeregnKvadratmeter1(string lejemaalDataFilename) //SRP - Beregner og henter fil, skal deles op i to metoder
+    //    {
+    //        var lejemaalene = File.ReadAllLines(lejemaalDataFilename);
+    //        var kvadratmeter = 0.0;
 
 
-            foreach (var lejemaal in lejemaalene)
-            {
-                var lejemaalParts = lejemaal.Split(',');
-                double lejemaalKvadratmeter; //Clean code - double skal ændres til var
-                double.TryParse(RemoveQuotes1(lejemaalParts[1]), out lejemaalKvadratmeter); //double ændres til var
-                kvadratmeter += lejemaalKvadratmeter;
-            }
+    //        foreach (var lejemaal in lejemaalene)
+    //        {
+    //            var lejemaalParts = lejemaal.Split(',');
+    //            double lejemaalKvadratmeter; //Clean code - double skal ændres til var
+    //            double.TryParse(RemoveQuotes1(lejemaalParts[1]), out lejemaalKvadratmeter); //double ændres til var
+    //            kvadratmeter += lejemaalKvadratmeter;
+    //        }
 
-            return kvadratmeter;
-        }
+    //        return kvadratmeter;
+    //    }
 
         
 
-        private string RemoveQuotes1(string lejemaalPart)
-        {
-            return lejemaalPart.Replace('"', ' ').Trim();
-        }
-    }
+    //    private string RemoveQuotes1(string lejemaalPart)
+    //    {
+    //        return lejemaalPart.Replace('"', ' ').Trim();
+    //    }
+    //}
 
     #endregion
 
